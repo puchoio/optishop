@@ -3,6 +3,7 @@ https://quarkus.io/guides/getting-started#bootstrapping-the-project
 		[GraalVM](https://www.graalvm.org/downloads)
 		Java 8+
 		Maven 3.6.2+
+		Docker
 	Generate project: mvn io.quarkus:quarkus-maven-plugin:1.4.2.Final:create -DprojectGroupId=com.jamon -DprojectArtifactId=scraper -DclassName="org.jamon.resource.started.GreetingResource" -Dpath="/hello
 	Build 4 jvm: mvn clean install
 	Build 4 ownNative: mvn package -Pnative
