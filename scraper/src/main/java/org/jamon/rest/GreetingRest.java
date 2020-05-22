@@ -18,7 +18,7 @@ public class GreetingRest {
 	@Inject
 	GreetingService service;
 
-	@ConfigProperty(name = "instancename")
+	@ConfigProperty(name = "HOSTNAME")
 	String instanceName;
 
 	@GET
@@ -31,6 +31,6 @@ public class GreetingRest {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello() {
-		return "hola";
+		return "hola:  " + instanceName;
 	}
 }
