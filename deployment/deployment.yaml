@@ -41,4 +41,14 @@ spec:
     - port: 8090
       targetPort: 8090
       nodePort: 30068
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: scraper-ingress
+spec:
+  backend:
+    serviceName: scraper-service
+    servicePort: 8090
+
 
