@@ -15,7 +15,7 @@ spec:
       containers:
       - name: scraper
         image: puchoborja/scraper:0.0.1
-	env:
+        env:
         - name: QUARKUS_HTTP_PORT
           value: 8090
         ports:
