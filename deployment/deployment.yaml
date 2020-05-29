@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: scraper
-        image: pucho/scraper:0.0.1
+        image: puchoborja/scraper:0.0.1
         ports:
         - containerPort: 8080
         resources:
