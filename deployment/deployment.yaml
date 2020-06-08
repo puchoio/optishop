@@ -17,7 +17,7 @@ spec:
         image: puchoborja/scraper:0.0.3
         volumeMounts:
         - name: scraper-volume
-          mountPath: /etc/config
+          mountPath: /work
         volumes:
         - name: scraper-volume
           configMap:
