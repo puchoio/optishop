@@ -40,6 +40,7 @@ apiVersion: v1
 metadata:
   name: prometheus-example-service
 spec:
+  type: NodePort
   selector:
     app: prometheus
     purpose: example
@@ -48,6 +49,7 @@ spec:
     protocol: TCP
     port: 9090
     targetPort: 9090
+    nodePort: 30069
 ```
 2. create prmetheus.yml 
 ```bash

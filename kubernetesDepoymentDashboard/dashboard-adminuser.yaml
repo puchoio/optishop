@@ -16,3 +16,6 @@ subjects:
 - kind: ServiceAccount
   name: admin-user
   namespace: kubernetes-dashboard
+- kind: ServiceAccount
+  name: admin-user
+  namespace: default

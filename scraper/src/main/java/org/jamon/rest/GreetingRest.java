@@ -18,6 +18,9 @@ public class GreetingRest {
 	@Inject
 	GreetingService service;
 
+	@ConfigProperty(name = "manolo")
+	String manolo;
+
 	@ConfigProperty(name = "HOSTNAME")
 	String instanceName;
 
@@ -25,7 +28,7 @@ public class GreetingRest {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/greeting/{name}")
 	public Uni<String> greeting(@PathParam String name) {
-		return service.greeting(name);
+		return service.greeting(name + manolo);
 	}
 
 	@GET
