@@ -4,5 +4,5 @@ metadata:
   name: scraper-config
   namespace: optishop
 data:
-  application.env: /
+  application.properties:
     manolo=manoloPerez

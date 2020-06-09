@@ -15,9 +15,12 @@ spec:
       containers:
       - name: scraper
         image: puchoborja/scraper:0.0.3
+        #args:
+        # - sleep
+        # - "9999"
         volumeMounts:
         - name: scraper-volume
-          mountPath: /work
+          mountPath: /work/config
         env:
         - name: QUARKUS_HTTP_PORT
           value: "8090"
