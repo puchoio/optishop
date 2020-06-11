@@ -7,9 +7,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.jamon.entity.Greeting;
 import org.jamon.service.GreetingService;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
 @Path("/hello")
@@ -29,6 +31,13 @@ public class GreetingRest {
 	@Path("/greeting/{name}")
 	public Uni<String> greeting(@PathParam String name) {
 		return service.greeting(name + manolo);
+	}
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/greetings")
+	public Multi<Greeting> greetings() {
+		return service.getGreetings();
 	}
 
 	@GET

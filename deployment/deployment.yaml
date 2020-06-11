@@ -24,6 +24,12 @@ spec:
         env:
         - name: QUARKUS_HTTP_PORT
           value: "8090"
+        - name: QUARKUS_DATASOURCE_URL
+          value: "vertx-reactive:postgresql://10.104.4.57:5432/scraperdb"
+        - name: QUARKUS_DATASOURCE_USERNAME
+          value: "scraper"
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          value: "password"
         ports:
         - containerPort: 8090
         resources:
@@ -55,10 +61,17 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: scraper-ingress
+  annotations:
+    kubernetes.io/ingress.class: istio
+  name: ingress
 spec:
-  backend:
-    serviceName: scraper-service
-    servicePort: 8090
+  rules:
+  - host: optishop.com
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: scraper-service
+          servicePort: 8090
 
 
