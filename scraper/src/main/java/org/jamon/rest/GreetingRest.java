@@ -34,7 +34,7 @@ public class GreetingRest {
 	}
 
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/greetings")
 	public Multi<Greeting> greetings() {
 		return service.getGreetings();
