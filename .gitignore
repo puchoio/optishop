@@ -16,6 +16,7 @@
 mvnw
 mvnw.cmd
 *.swp
+*.bin
 # Compiled source #
 ###################
 *.com
