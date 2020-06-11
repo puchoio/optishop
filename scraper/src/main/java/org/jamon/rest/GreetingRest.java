@@ -16,6 +16,7 @@ import io.smallrye.mutiny.Uni;
 
 @Path("/hello")
 public class GreetingRest {
+	private int count = 0;
 
 	@Inject
 	GreetingService service;
@@ -37,6 +38,7 @@ public class GreetingRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/greetings")
 	public Multi<Greeting> greetings() {
+		System.out.println("Request #" + count++);
 		return service.getGreetings();
 	}
 
