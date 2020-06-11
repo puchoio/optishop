@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: scraper
-        image: puchoborja/scraper:0.0.4
+        image: puchoborja/scraper:0.0.5
         #args:
         # - sleep
         # - "9999"
