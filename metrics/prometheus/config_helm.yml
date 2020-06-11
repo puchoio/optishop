@@ -1,1 +1,0 @@
-{alertmanager.persistentVolume.accessModes: ReadWriteMany, server.persistentVolume.accessModes: ReadWriteMany}
