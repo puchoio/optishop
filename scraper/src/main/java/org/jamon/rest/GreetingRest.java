@@ -45,6 +45,6 @@ public class GreetingRest {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello() {
-		return "hola:  " + instanceName;
+		return "adios:  " + instanceName;
 	}
 }
