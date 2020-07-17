@@ -1,0 +1,18 @@
+ssh_authorized_keys:
+- "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDO6/bWX/U1SK8y+mBsdcpVWf+/Vq3sWIbhBbl3Ui9DzEeiPmR6KJMZ5Z2xWwLw9CgpYbYCDWvF22YxnGKYGJXZvHtQFATH97U60JGTv6KRZmF5aEfA2JmRdLPR8RKtMnbZi/k0e8WVHNFcOSnVXelDqe89B5sBo7fezbyxKkfp3M1u4yH27mc8WNto0B4nYeyt30Mj90ENMMAUIexwwz+lOgTKl+/2s5YohzSuDb1MuiuPJWHahX0gBuBp31e/jZo+nZx3DMdp65VqvdQvU8TspU28eK03YdOLaggaHIHkccXdX5xPCiebhU1MhIQ8Fqd+FXcE1IgbYjlKp8XS0xT8HlDWWOJTlrcCk6ewUT66eB3MphJjKNSKXSY++Bkpbcc2Zdsxm/3wb2eyB1dCBI72PmBxijRPSiZNbzWCtVsHmx6mmuYlAReA5KpQ74jOlxSOJBUt67lK5CfIlIy7nMsp9e6vCPQSksC9xoMh8JqcaT37f3AjjfJbdIfi67MGUuMsiRvlR8P5P0Qq5hV0CicdFjoIRlJ/lblR21YFNFSIl07VKBQuafiswLH7DSt+a5xbSF3J5xY85OhZ9ZbW9VPkPUSIkjmNWNm2S9YUR4zscKF3XdDduta8hDnfbRKnqOJvv9bu2Jf2ChNcdYwWRa6rGwe5LiJn46sfc0ttNBv/ZQ== borjasperez@gmil.com"
+- "github:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDO6/bWX/U1SK8y+mBsdcpVWf+/Vq3sWIbhBbl3Ui9DzEeiPmR6KJMZ5Z2xWwLw9CgpYbYCDWvF22YxnGKYGJXZvHtQFATH97U60JGTv6KRZmF5aEfA2JmRdLPR8RKtMnbZi/k0e8WVHNFcOSnVXelDqe89B5sBo7fezbyxKkfp3M1u4yH27mc8WNto0B4nYeyt30Mj90ENMMAUIexwwz+lOgTKl+/2s5YohzSuDb1MuiuPJWHahX0gBuBp31e/jZo+nZx3DMdp65VqvdQvU8TspU28eK03YdOLaggaHIHkccXdX5xPCiebhU1MhIQ8Fqd+FXcE1IgbYjlKp8XS0xT8HlDWWOJTlrcCk6ewUT66eB3MphJjKNSKXSY++Bkpbcc2Zdsxm/3wb2eyB1dCBI72PmBxijRPSiZNbzWCtVsHmx6mmuYlAReA5KpQ74jOlxSOJBUt67lK5CfIlIy7nMsp9e6vCPQSksC9xoMh8JqcaT37f3AjjfJbdIfi67MGUuMsiRvlR8P5P0Qq5hV0CicdFjoIRlJ/lblR21YFNFSIl07VKBQuafiswLH7DSt+a5xbSF3J5xY85OhZ9ZbW9VPkPUSIkjmNWNm2S9YUR4zscKF3XdDduta8hDnfbRKnqOJvv9bu2Jf2ChNcdYwWRa6rGwe5LiJn46sfc0ttNBv/ZQ=="
+hostname: latorre
+
+k3os:
+  password: rancher
+  server_url: https://192.168.1.120:6443
+  token: k3oskluster
+  labels:
+    region: san-blas
+    somekey: latorre
+  k3s_args:
+  - server
+  - "--cluster-cidr=10.107.0.0/23"
+  - "--service-cidr=10.107.1.0/23"
+  taints:
+  - node-role.kubernetes.io/master=effect:NoSchedule

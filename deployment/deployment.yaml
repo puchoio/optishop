@@ -30,6 +30,8 @@ spec:
           value: "scraper"
         - name: QUARKUS_DATASOURCE_PASSWORD
           value: "password"
+        - name: QUARKUS_DATASOURCE_REACTIVE_MAX-SIZE
+          value: "1500"
         ports:
         - containerPort: 8090
         resources:
@@ -58,7 +60,7 @@ spec:
       name: http-service-port
       targetPort: 8090
       nodePort: 30068
-  clusterIP: 10.98.251.5
+  clusterIP: 10.43.0.5
   externalTrafficPolicy: Cluster
 ---
 apiVersion: v1

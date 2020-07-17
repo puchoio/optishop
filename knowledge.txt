@@ -1,0 +1,3 @@
+copy to clipboard
+
+ base64 server.csr |  tr -d "\n" | xclip
