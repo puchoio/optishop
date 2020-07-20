@@ -38,13 +38,13 @@ public class GreetingRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/greetings")
 	public Multi<Greeting> greetings() {
-		System.out.println("Request #" + count++);
 		return service.getGreetings();
 	}
 
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello() {
-		return "adios:  " + instanceName;
+		System.out.println("Request # " + count++);
+		return "borja:  " + instanceName;
 	}
 }

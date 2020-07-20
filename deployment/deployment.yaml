@@ -1,20 +1,79 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: scraper-deployment
+  name: scraper-deployment-v1
+  labels:
+    app: scraper
+    version: v1
 spec:
   selector:
     matchLabels:
       app: scraper
-  replicas: 2 # tells deployment to run 2 pods matching the template
+      version: v1
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
         app: scraper
+        version: v1
     spec:
       containers:
       - name: scraper
         image: puchoborja/scraper:0.0.5
+        #args:
+        # - sleep
+        # - "9999"
+        volumeMounts:
+        - name: scraper-volume
+          mountPath: /work/config
+        env:
+        - name: QUARKUS_HTTP_PORT
+          value: "8090"
+        - name: QUARKUS_DATASOURCE_URL
+          value: "vertx-reactive:postgresql://10.104.4.57:5432/scraperdb"
+        - name: QUARKUS_DATASOURCE_USERNAME
+          value: "scraper"
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          value: "password"
+        - name: QUARKUS_DATASOURCE_REACTIVE_MAX-SIZE
+          value: "1500"
+        ports:
+        - containerPort: 8090
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "100m"
+      volumes:
+      - name: scraper-volume
+        configMap:
+          name: scraper-config
+      serviceAccountName: scraper-serviceaccount
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: scraper-deployment-v2
+  labels:
+    app: scraper
+    version: v2
+spec:
+  selector:
+    matchLabels:
+      app: scraper
+      version: v2
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: scraper
+        version: v2
+    spec:
+      containers:
+      - name: scraper
+        image: puchoborja/scraper:0.0.6
         #args:
         # - sleep
         # - "9999"
@@ -57,7 +116,7 @@ spec:
     app: scraper
   ports:
     - port: 8090
-      name: http-service-port
+      name: http-web
       targetPort: 8090
       nodePort: 30068
   clusterIP: 10.43.0.5
