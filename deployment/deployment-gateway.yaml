@@ -4,7 +4,7 @@ metadata:
   name: scraper-gateway
 spec:
   selector:
-    istio: ingressgateway # use istio default controller
+    istio: ingressgateway 
   servers:
   - port:
       number: 80
@@ -16,18 +16,33 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: scraper-virtualservice
+  name: scraper
 spec:
   hosts:
   - "*"
   gateways:
   - scraper-gateway
   http:
-  - match:
-    - uri:
-        exact: /hello
-    route:
+  - route:
     - destination:
         host: scraper
-        port:
-          number: 8090
+        subset: v1
+      weight: 80
+    - destination:
+        host: scraper
+        subset: v2
+      weight: 20
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: scraper
+spec:
+  host: scraper
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
