@@ -45,6 +45,6 @@ public class GreetingRest {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello() {
 		System.out.println("Request # " + count++);
-		return "borja:  " + instanceName;
+		return "pucho:  " + instanceName;
 	}
 }
